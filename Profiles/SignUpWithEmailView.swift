@@ -36,6 +36,7 @@ final class AuthenticationViewModel: ObservableObject {
 struct SignUpWithEmailView: View {
     
     @StateObject private var viewModel = AuthenticationViewModel()
+    @Binding var showProfileView: Bool
     
     var body: some View {
         VStack {
@@ -70,6 +71,6 @@ struct SignUpWithEmailView: View {
 
 #Preview {
     NavigationStack{
-        SignUpWithEmailView()
+        SignUpWithEmailView(showProfileView: .constant(false))
     }
 }
