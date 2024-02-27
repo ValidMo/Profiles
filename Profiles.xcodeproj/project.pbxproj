@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		0D1BCE492B8B15DF0014FF83 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D1BCE482B8B15DF0014FF83 /* RootView.swift */; };
 		0D1BCE4B2B8B19A40014FF83 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D1BCE4A2B8B19A40014FF83 /* ProfileView.swift */; };
+		0D8E5B3F2B8C7C7800007974 /* SignInWithEmailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D8E5B3E2B8C7C7800007974 /* SignInWithEmailView.swift */; };
 		0DCCB7BF2B88B933008E0090 /* ProfilesApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DCCB7BE2B88B933008E0090 /* ProfilesApp.swift */; };
 		0DCCB7C32B88B936008E0090 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0DCCB7C22B88B936008E0090 /* Assets.xcassets */; };
 		0DCCB7C62B88B936008E0090 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0DCCB7C52B88B936008E0090 /* Preview Assets.xcassets */; };
@@ -17,20 +18,21 @@
 		0DCCB7D42B88C157008E0090 /* FirebaseAnalyticsSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 0DCCB7D32B88C157008E0090 /* FirebaseAnalyticsSwift */; };
 		0DCCB7D92B892770008E0090 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 0DCCB7D82B892770008E0090 /* FirebaseAuth */; };
 		0DCCB7DB2B892928008E0090 /* AuthenticationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DCCB7DA2B892928008E0090 /* AuthenticationView.swift */; };
-		0DCCB7DD2B892AD2008E0090 /* SignUpEmailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DCCB7DC2B892AD2008E0090 /* SignUpEmailView.swift */; };
+		0DCCB7DD2B892AD2008E0090 /* SignUpWithEmailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DCCB7DC2B892AD2008E0090 /* SignUpWithEmailView.swift */; };
 		0DCCB7DF2B892D69008E0090 /* AuthenticationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DCCB7DE2B892D69008E0090 /* AuthenticationManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		0D1BCE482B8B15DF0014FF83 /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
 		0D1BCE4A2B8B19A40014FF83 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		0D8E5B3E2B8C7C7800007974 /* SignInWithEmailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInWithEmailView.swift; sourceTree = "<group>"; };
 		0DCCB7BB2B88B933008E0090 /* Profiles.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Profiles.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0DCCB7BE2B88B933008E0090 /* ProfilesApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilesApp.swift; sourceTree = "<group>"; };
 		0DCCB7C22B88B936008E0090 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0DCCB7C52B88B936008E0090 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		0DCCB7CC2B88BEA4008E0090 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		0DCCB7DA2B892928008E0090 /* AuthenticationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationView.swift; sourceTree = "<group>"; };
-		0DCCB7DC2B892AD2008E0090 /* SignUpEmailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpEmailView.swift; sourceTree = "<group>"; };
+		0DCCB7DC2B892AD2008E0090 /* SignUpWithEmailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpWithEmailView.swift; sourceTree = "<group>"; };
 		0DCCB7DE2B892D69008E0090 /* AuthenticationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -69,11 +71,12 @@
 			isa = PBXGroup;
 			children = (
 				0DCCB7BE2B88B933008E0090 /* ProfilesApp.swift */,
-				0DCCB7DA2B892928008E0090 /* AuthenticationView.swift */,
-				0DCCB7DC2B892AD2008E0090 /* SignUpEmailView.swift */,
-				0DCCB7DE2B892D69008E0090 /* AuthenticationManager.swift */,
 				0D1BCE482B8B15DF0014FF83 /* RootView.swift */,
+				0DCCB7DA2B892928008E0090 /* AuthenticationView.swift */,
+				0DCCB7DC2B892AD2008E0090 /* SignUpWithEmailView.swift */,
+				0D8E5B3E2B8C7C7800007974 /* SignInWithEmailView.swift */,
 				0D1BCE4A2B8B19A40014FF83 /* ProfileView.swift */,
+				0DCCB7DE2B892D69008E0090 /* AuthenticationManager.swift */,
 				0DCCB7C22B88B936008E0090 /* Assets.xcassets */,
 				0DCCB7CC2B88BEA4008E0090 /* GoogleService-Info.plist */,
 				0DCCB7C42B88B936008E0090 /* Preview Content */,
@@ -180,7 +183,8 @@
 				0D1BCE492B8B15DF0014FF83 /* RootView.swift in Sources */,
 				0DCCB7DB2B892928008E0090 /* AuthenticationView.swift in Sources */,
 				0DCCB7DF2B892D69008E0090 /* AuthenticationManager.swift in Sources */,
-				0DCCB7DD2B892AD2008E0090 /* SignUpEmailView.swift in Sources */,
+				0D8E5B3F2B8C7C7800007974 /* SignInWithEmailView.swift in Sources */,
+				0DCCB7DD2B892AD2008E0090 /* SignUpWithEmailView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

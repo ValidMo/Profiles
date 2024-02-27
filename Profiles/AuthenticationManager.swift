@@ -30,6 +30,14 @@ final class AuthenticationManager {
         return AuthDataResultModel(user: authDataResult.user)
     }
     
+    @discardableResult
+    func signIn(email: String, password: String) async throws -> AuthDataResultModel {
+        let authDataResult = try await Auth.auth().signIn(withEmail: email, password: password)
+        return AuthDataResultModel(user: authDataResult.user)
+        
+        
+    }
+    
     func getAuthenticatedUser() throws -> AuthDataResultModel {
         guard let user = Auth.auth().currentUser else {
             throw URLError(.badServerResponse)
@@ -38,6 +46,7 @@ final class AuthenticationManager {
         return AuthDataResultModel(user: user)
         
     }
+     
     
     func SignOut() throws {
          try Auth.auth().signOut()
