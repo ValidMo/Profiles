@@ -19,7 +19,7 @@ final class SignInWithEmailViewModel: ObservableObject {
             return
         }
         try await AuthenticationManager.shared.signIn(email: email, password: password)
-        
+        print("Successfully Signed In")
     }
 }
 
@@ -57,8 +57,8 @@ struct SignInWithEmailView: View {
                         isLoading.toggle()
                     } catch {
                         print("Sign-in failed: \(error)")
-                        isLoading.toggle()
                         logInErrorMessage.toggle()
+                        isLoading.toggle()
                     }
                 }
             }  label: {
@@ -79,7 +79,7 @@ struct SignInWithEmailView: View {
             .disabled(isLoading)
             .opacity(isLoading ? 0.5 : 1)
             
-            Text("Sorry your password or username was incorrect. Please double check.")
+            Text("Invalid username or password. Please double check.")
                 .foregroundStyle(Color.red)
                 .opacity(logInErrorMessage ? 1 : 0)
             

@@ -14,21 +14,25 @@ final class AuthenticationViewModel: ObservableObject {
     @Published var email: String = ""
     @Published var password: String = ""
     
-    func signUpWithEmail() {
+    func signUpWithEmail() async throws {
         guard !email.isEmpty, !password.isEmpty else {
             print("no email or password is found")
             return
         }
-        Task {
-            do {
-                let returnedUserData = try await AuthenticationManager.shared.createUser(email: email, password: password)
-                print("Success")
-                print(returnedUserData)
-            } catch {
-                print("Error: \(error)")
-                
-            }
+        
+        try await AuthenticationManager.shared.createUser(email: email, password: password)
+        print("Successfully Created User")
+        
+    }
+    
+    func signInWithEmail() async throws {
+        guard !email.isEmpty && !password.isEmpty
+        else {
+            print("User of Password Field is Empty")
+            return
         }
+        try await AuthenticationManager.shared.signIn(email: email, password: password)
+        print("Successfully Signed In")
     }
     
 }
@@ -37,6 +41,8 @@ struct SignUpWithEmailView: View {
     
     @StateObject private var viewModel = AuthenticationViewModel()
     @Binding var showProfileView: Bool
+    @State private var signUpErrorMessage: Bool = false
+    @State private var isLoading: Bool = false
     
     var body: some View {
         VStack {
@@ -51,18 +57,56 @@ struct SignUpWithEmailView: View {
                 .cornerRadius(10)
             
             Button {
-                viewModel.signUpWithEmail()
+                
+                
+                guard !viewModel.email.isEmpty, !viewModel.password.isEmpty else {
+                    signUpErrorMessage.toggle()
+                    return
+                }
+                isLoading.toggle()
+                
+                Task {
+                    do{
+                        try await viewModel.signUpWithEmail()
+                        
+                    } catch {
+                        signUpErrorMessage.toggle()
+                        print("Error while creating user: \(error)")
+                        isLoading.toggle()
+                    }
+                    
+                    do {
+                        try await viewModel.signInWithEmail()
+                        showProfileView.toggle()
+                        isLoading.toggle()
+                    } catch {
+                        print("Error while logging in: \(error)")
+                    }
+                }
             } label: {
-                Text("SignUp")
-                    .font(.headline)
-                    .foregroundColor(.white)
-                    .frame(height: 55)
-                    .frame(maxWidth: .infinity)
-                    .background(Color.blue)
-                    .cornerRadius(10)
+                if isLoading {
+                    ProgressView()
+                } else {
+                    Text("Sign Up")
+                        .font(.headline)
+                        .foregroundColor(.white)
+                }
+                
+                
             }
+            .frame(height: 55)
+            .frame(maxWidth: .infinity)
+            .background(Color.blue)
+            .cornerRadius(10)
+            .disabled(isLoading)
+            .opacity(isLoading ? 0.5 : 1)
+            
+            Text("Error while creating user.")
+                .foregroundStyle(Color.red)
+                .opacity(signUpErrorMessage ? 1 : 0)
+            
             Spacer()
-
+            
         }
         .padding()
         .navigationTitle("SignUp with Email")
