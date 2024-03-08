@@ -29,6 +29,7 @@ struct SignInWithEmailView: View {
     @Binding var showProfileView: Bool
     @State private var isLoading: Bool = false
     @State private var logInErrorMessage: Bool = false
+    @State var showForgotPasswordView: Bool = false
     
     
     var body: some View {
@@ -78,6 +79,13 @@ struct SignInWithEmailView: View {
             .cornerRadius(10)
             .disabled(isLoading)
             .opacity(isLoading ? 0.5 : 1)
+            
+            Button("Forgot Password?"){
+                showForgotPasswordView.toggle()
+            }
+            .sheet(isPresented: $showForgotPasswordView){
+              ForgotPasswordView(showForgotPasswordView: $showForgotPasswordView)
+            }
             
             Text("Invalid username or password. Please double check.")
                 .foregroundStyle(Color.red)

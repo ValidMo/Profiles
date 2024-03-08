@@ -17,6 +17,12 @@ struct AuthDataResultModel {
         self.email = user.email
     }
     
+    init(uid: String, email: String)
+    {
+        self.uid = uid
+        self.email = email
+    }
+    
 }
 
 final class AuthenticationManager {
@@ -38,6 +44,7 @@ final class AuthenticationManager {
         
     }
     
+    @discardableResult
     func getAuthenticatedUser() throws -> AuthDataResultModel {
         guard let user = Auth.auth().currentUser else {
             throw URLError(.badServerResponse)
@@ -46,10 +53,29 @@ final class AuthenticationManager {
         return AuthDataResultModel(user: user)
         
     }
-     
+    
     
     func SignOut() throws {
-         try Auth.auth().signOut()
+        try Auth.auth().signOut()
+    }
+    
+    func DeleteUser() throws {
+        Auth.auth().currentUser?.delete()
+    }
+    
+    func ResetPassword(email: String) async throws {
+        try await Auth.auth().sendPasswordReset(withEmail: email)
+    }
+    
+    func signIn(with credental: AuthCredential) async throws -> AuthDataResultModel {
+       let authDataRsult = try await Auth.auth().signIn(with: credental)
+        return AuthDataResultModel(user: authDataRsult.user)
+    }
+    
+    @discardableResult
+    func signInWithGoogle(tokens: GoogleSignInResultModel) async throws -> AuthDataResultModel {
+        let credential = GoogleAuthProvider.credential(withIDToken: tokens.idToken, accessToken: tokens.accesToken)
+        return try await signIn(with: credential)
     }
     
 }

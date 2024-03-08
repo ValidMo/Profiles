@@ -9,7 +9,7 @@ import SwiftUI
 
 
 @MainActor
-final class AuthenticationViewModel: ObservableObject {
+final class SignUpViewModel: ObservableObject {
     
     @Published var email: String = ""
     @Published var password: String = ""
@@ -39,7 +39,7 @@ final class AuthenticationViewModel: ObservableObject {
 
 struct SignUpWithEmailView: View {
     
-    @StateObject private var viewModel = AuthenticationViewModel()
+    @StateObject private var viewModel = SignUpViewModel()
     @Binding var showProfileView: Bool
     @State private var signUpErrorMessage: Bool = false
     @State private var isLoading: Bool = false
